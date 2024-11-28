@@ -23,7 +23,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          ref: test/automation
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -67,5 +67,5 @@ jobs:
           # base: dev
           # branch-suffix: timestamp
           title: "Update CloudFormation thresholds"
-          base: dev
+          base: test/automation
           body: "This PR updates thresholds for metrics based on the latest analytics data."
