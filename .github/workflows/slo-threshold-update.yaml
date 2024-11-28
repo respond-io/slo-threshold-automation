@@ -31,13 +31,13 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_CODEGURU_ROLE_ARN }}
           aws-region: ap-southeast-1
-          role-session-name: 'codeguru-slo-threshold-automation'
+          role-session-name: 'slo-threshold-automation'
       
       - name: Check action Path
         run: ls -la ./.github/actions/slo-threshold-automation
 
       - name: Process SLO Latency
-        uses: ./.github/actions/slo-threshold-automation
+        uses: haqimazhar/slo-threshold-automation@v0.0.1
         with:
           slo_config: ./.github/actions/slo-threshold-automation/config.yaml
 
