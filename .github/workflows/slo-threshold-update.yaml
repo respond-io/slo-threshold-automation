@@ -41,23 +41,6 @@ jobs:
         uses: haqimazhar/slo-threshold-automation@v0.0.1
         with:
           slo_config: ./config.yaml
-      
-      - name: list all files in the repository
-        run: |
-          cd slo-dashboard
-          cat new-latency-slo.yaml
-
-
-      # - name: Commit and Push Changes
-      #   run: |
-      #     git config user.name "github-actions"
-      #     git config user.email "actions@github.com"
-      #     git checkout master 
-      #     git pull origin master
-      #     git checkout -b update-thresholds
-      #     git add template.yaml
-      #     git commit -m "chore: update CloudFormation thresholds"
-      #     git push origin update-thresholds
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
@@ -66,13 +49,12 @@ jobs:
           branch: slo-threshold-automation
           branch-suffix: timestamp
           title: "[MASTER]: 🚀 Updated Workflows SLO Latency Thresholds"
-          base: test/automation
           body: |
             ## 🎉 What's New?
-            This PR updates the thresholds for workfloes Service Level Indicators (SLI) based on the latest available metric, ensuring optimized performance and reliability. 📊✨
-
+            This PR updates the Service Level Indicator (SLI) thresholds for various workflows, leveraging the latest available metrics to ensure optimal performance and reliability. 📊✨
+            
             ### 🛠️ Key Changes
-            - Updated SLO latency thresholds for each workflows .
+            - Updated latency Service Level Objectives (SLO) threshold for each workflows .
             - Improved metrics configuration for better monitoring.
 
             ### ✅ Why is this important?
