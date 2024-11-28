@@ -8,6 +8,8 @@ on:
       - 'master'
       - 'dev'
       - 'test/automation'
+  schedule:
+    - cron: '*/5 * * * *' 
 
 permissions:
   id-token: write
@@ -22,6 +24,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with: 
+          ref: test/automation
 
       - name: Set up Python
         uses: actions/setup-python@v4
