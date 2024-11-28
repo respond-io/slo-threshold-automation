@@ -13,4 +13,5 @@ runs:
   using: "docker"
   image: "dockerfile"
   args:
+    - "--config"
     - ${{ inputs.slo_config }}
