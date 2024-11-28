@@ -1,0 +1,16 @@
+name: "SLO Latency Processor"
+description: "A custom GitHub Action to process SLO latency workflows."
+author: "Your Name"
+inputs:
+  slo_config:
+    description: "Path to the SLO configuration file"
+    required: true
+    default: "config.yaml"
+outputs:
+  status:
+    description: "Status of the SLO processing action"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.slo_config }}

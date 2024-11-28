@@ -1,0 +1,20 @@
+slo:
+  - name: "workflow-1"
+    namespace: "Workflows Duration"
+    prefix: "-workflow-latency"
+    dimension_name: "Workflow Name"
+    extended_statistic: "p99"
+    period: 300  # 5 minutes in seconds
+    days: 4  # Last 4 days
+    input_yaml_path: "../slo-dashboard/latency-slo.yaml"
+    output_yaml_path: "../slo-dashboard/latency-slo.yaml"
+
+  - name: "workflow-2"
+    namespace: "Workflows Duration"
+    prefix: "-workflow-latency"
+    dimension_name: "Workflow Name"
+    extended_statistic: "p99"
+    period: 600  # 10 minutes in seconds
+    days: 10  # Last 7 days
+    input_yaml_path: "../slo-dashboard/latency-slo.yaml"
+    output_yaml_path: "../slo-dashboard/2-modified-latency-slo.yaml"
