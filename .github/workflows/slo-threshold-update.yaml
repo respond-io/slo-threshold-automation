@@ -41,7 +41,6 @@ jobs:
       - name: list all files in the repository
         run: |
           cd slo-dashboard
-          ls -la
           cat new-latency-slo.yaml
 
 
@@ -54,10 +53,11 @@ jobs:
       #     git commit -m "chore: update CloudFormation thresholds"
       #     git push origin update-thresholds
 
-      # - name: Create Pull Request
-      #   uses: peter-evans/create-pull-request@v5
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: update-thresholds
-      #     title: "Update CloudFormation thresholds"
-      #     body: "This PR updates thresholds for metrics based on the latest analytics data."
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: master
+          branch: dev
+          title: "Update CloudFormation thresholds"
+          body: "This PR updates thresholds for metrics based on the latest analytics data."
