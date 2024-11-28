@@ -69,4 +69,5 @@ jobs:
           # base: dev
           # branch-suffix: timestamp
           title: "Update CloudFormation thresholds"
+          base: dev
           body: "This PR updates thresholds for metrics based on the latest analytics data."
