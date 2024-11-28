@@ -39,6 +39,10 @@ jobs:
         uses: haqimazhar/slo-threshold-automation@v0.0.1
         with:
           slo_config: ./config.yaml
+      
+      - name: stage changes 
+        run: |
+          git add .
 
       - name: list all files in the repository
         run: |
