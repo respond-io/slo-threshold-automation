@@ -31,7 +31,8 @@ jobs:
 
       - name: Process SLO Latency
         uses: ./.github/actions/slo-threshold-automation
-
+        with:
+          slo_config: ./.github/actions/slo-threshold-automation/config.yaml
 
       # - name: Commit and Push Changes
       #   run: |
