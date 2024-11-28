@@ -38,6 +38,12 @@ jobs:
         with:
           slo_config: ./config.yaml
 
+      - name: list all files in the repository
+        run: |
+          cd slo-dashboard
+          ls -la
+
+
       # - name: Commit and Push Changes
       #   run: |
       #     git config user.name "github-actions"
