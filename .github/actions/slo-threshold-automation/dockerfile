@@ -27,4 +27,4 @@ COPY requirements.txt /home/app/requirements.txt
 RUN pip install -r requirements.txt
 
 # Action entrypoint
-ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["python", "/home/app/main.py"]
