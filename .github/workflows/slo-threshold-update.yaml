@@ -42,6 +42,7 @@ jobs:
         run: |
           cd slo-dashboard
           ls -la
+          cat new-latency-slo.yaml
 
 
       # - name: Commit and Push Changes
