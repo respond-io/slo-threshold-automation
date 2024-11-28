@@ -59,6 +59,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: master
-          branch: dev
           title: "Update CloudFormation thresholds"
           body: "This PR updates thresholds for metrics based on the latest analytics data."
