@@ -27,7 +27,7 @@ jobs:
           python-version: 3.13
 
       - name: Process SLO Latency
-        uses: ./github/actions/slo-threshold-automation
+        uses: .github/actions/slo-threshold-automation
 
 
       # - name: Commit and Push Changes
