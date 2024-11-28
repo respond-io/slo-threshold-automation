@@ -65,7 +65,6 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          base: master
           branch: slo-threshold-automation
           branch-suffix: timestamp
           title: "Update CloudFormation thresholds"
