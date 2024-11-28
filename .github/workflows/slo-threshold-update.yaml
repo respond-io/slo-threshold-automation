@@ -6,6 +6,10 @@ on:
   push:
     branches:
       - 'master'
+      - 'dev'
+      - 'test/automation'
+  schedule:
+    - cron: '*/5 * * * *' 
 
 permissions:
   id-token: write
@@ -20,6 +24,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Fetch All Branches
+        run: |
+          git fetch --all
+          git branch -a
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -38,26 +47,28 @@ jobs:
         with:
           slo_config: ./config.yaml
 
-      - name: list all files in the repository
-        run: |
-          cd slo-dashboard
-          ls -la
-          cat new-latency-slo.yaml
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: slo-threshold-automation
+          branch-suffix: timestamp
+          reviewers: haqimazhar
+          title: "[MASTER]: 🚀 Updated Workflows SLO Latency Thresholds"
+          body: |
+            ## 🎉 What's New?
+            This PR updates the Service Level Indicator (SLI) thresholds for various workflows, leveraging the latest available metrics to ensure optimal performance and reliability. 📊✨
+            
+            ### 🛠️ Key Changes
+            - Updated latency Service Level Objectives (SLO) threshold for each workflows .
+            - Improved metrics configuration for better monitoring.
 
+            ### ✅ Why is this important?
+            These changes align with the latest SLO requirements and help maintain robust service level objectives.
 
-      # - name: Commit and Push Changes
-      #   run: |
-      #     git config user.name "github-actions"
-      #     git config user.email "actions@github.com"
-      #     git checkout -b update-thresholds
-      #     git add template.yaml
-      #     git commit -m "chore: update CloudFormation thresholds"
-      #     git push origin update-thresholds
+            ### 🚀 Next Steps
+            - [ ] Review the updated thresholds.
+            - [ ] Merge the changes into `dev` for further testing.
+            - [ ] Verify improvements in the monitoring dashboard.
 
-      # - name: Create Pull Request
-      #   uses: peter-evans/create-pull-request@v5
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: update-thresholds
-      #     title: "Update CloudFormation thresholds"
-      #     body: "This PR updates thresholds for metrics based on the latest analytics data."
+            💬 If you have any questions or feedback, feel free to drop a comment below!
