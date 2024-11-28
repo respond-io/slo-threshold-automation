@@ -17,4 +17,4 @@ slo:
     period: 600  # 10 minutes in seconds
     days: 10  # Last 7 days
     input_yaml_path: "../slo-dashboard/latency-slo.yaml"
-    output_yaml_path: "../slo-dashboard/2-modified-latency-slo.yaml"
+    output_yaml_path: "../slo-dashboard/2-modified-latency-slo.yaml" 
