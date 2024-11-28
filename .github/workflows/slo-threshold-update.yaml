@@ -24,8 +24,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with: 
-          fetch-depth: 0
 
       - name: Fetch All Branches
         run: |
@@ -56,33 +54,6 @@ jobs:
           branch: slo-threshold-automation
           branch-suffix: timestamp
           reviewers: haqimazhar
-          title: "[MASTER]: 🚀 Updated Workflows SLO Latency Thresholds"
-          body: |
-            ## 🎉 What's New?
-            This PR updates the Service Level Indicator (SLI) thresholds for various workflows, leveraging the latest available metrics to ensure optimal performance and reliability. 📊✨
-            
-            ### 🛠️ Key Changes
-            - Updated latency Service Level Objectives (SLO) threshold for each workflows .
-            - Improved metrics configuration for better monitoring.
-
-            ### ✅ Why is this important?
-            These changes align with the latest SLO requirements and help maintain robust service level objectives.
-
-            ### 🚀 Next Steps
-            - [ ] Review the updated thresholds.
-            - [ ] Merge the changes into `dev` for further testing.
-            - [ ] Verify improvements in the monitoring dashboard.
-
-            💬 If you have any questions or feedback, feel free to drop a comment below!
-
-      - name: Create Pull Request Master
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: slo-threshold-automation
-          branch-suffix: timestamp
-          reviewers: haqimazhar
-          base: master
           title: "[MASTER]: 🚀 Updated Workflows SLO Latency Thresholds"
           body: |
             ## 🎉 What's New?
