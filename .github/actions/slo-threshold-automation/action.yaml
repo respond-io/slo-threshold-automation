@@ -11,6 +11,6 @@ outputs:
     description: "Status of the SLO processing action"
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "dockerfile"
   args:
     - ${{ inputs.slo_config }}
