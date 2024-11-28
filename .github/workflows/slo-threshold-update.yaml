@@ -25,7 +25,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with: 
-          ref: test/automation
           fetch-depth: 0
 
       - name: Set up Python
