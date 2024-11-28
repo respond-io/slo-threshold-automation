@@ -34,7 +34,7 @@ jobs:
           role-session-name: 'slo-threshold-automation'
 
       - name: Process SLO Latency
-        uses: ./
+        uses: haqimazlan/slo-threshold-automation@v0.0.1
         with:
           slo_config: ./config.yaml
 
