@@ -8,8 +8,16 @@ from utils.functions import (
 )
 from utils.cli import setup_cli
 import json
+import boto3
 
 
+def list_cloudwatch_log_groups():
+    client = boto3.client('logs', region_name='ap-southeast-1')
+    response = client.describe_log_groups()
+    log_groups = response.get('logGroups', [])
+    print(log_groups)
+    return [log_group['logGroupName'] for log_group in log_groups]
+    
 def main():
     # Get the argument parser from cli.py and parse arguments
     parser = setup_cli()
@@ -27,3 +35,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    list_cloudwatch_log_groups()
