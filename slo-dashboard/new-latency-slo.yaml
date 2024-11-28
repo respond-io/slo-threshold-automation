@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template for Service Level Objectives (SLO) - latency
+Parameters:
+  Environment:
+    Type: String
+    AllowedValues:
+      - staging
+      - production
+  SloGoal:
+    Type: String
+    Default: '99.9'
+    Description: The attainment goal for the SLO
+  WarningThreshold:
+    Type: String
+    Default: '30'
+    Description: The warning threshold for the SLO
+  IntervalDuration:
+    Type: String
+    Default: '1'
+    Description: The duration of the interval in months
+  StartTime:
+    Type: String
+    Default: '1727712000'
+    Description: The start time of the interval
+  MetricNamespace:
+    Type: String
+    Default: Workflows Duration
+    Description: The start time of the interval
+  MetricName:
+    Type: String
+    Default: Workflow Name
+    Description: The start time of the interval
+Resources:
+  AskQuestionWorkflowLatencySLO:
+    Type: AWS::ApplicationSignals::ServiceLevelObjective
+    Properties:
+      Description: SLO for latency of the askQuestion function
+      Sli:
+        ComparisonOperator: LessThan
+        MetricThreshold: 8549
+        SliMetric:
+          MetricDataQueries:
+            - Id: m1
+              MetricStat:
+                Period: 60
+                Metric:
+                  Dimensions:
+                    - Name: !Ref 'MetricName'
+                      Value: ask-question
+                  MetricName: ask-question-workflow-latency
+                  Namespace: !Ref 'MetricNamespace'
+                Stat: Average
+      Name: Workflow Ask Question - Latency
+      Goal:
+        AttainmentGoal: !Ref 'SloGoal'
+        Interval:
+          CalendarInterval:
+            Duration: !Ref 'IntervalDuration'
+            DurationUnit: MONTH
+            StartTime: '1727712000'
+        WarningThreshold: !Ref 'WarningThreshold'
