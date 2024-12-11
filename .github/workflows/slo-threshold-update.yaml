@@ -9,8 +9,6 @@ on:
       - 'dev'
       - 'hotfix/update-error-handling-process-slo-latency-function'
       - 'test/automation'
-  schedule:
-    - cron: '*/5 * * * *' 
 
 permissions:
   id-token: write
