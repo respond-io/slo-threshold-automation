@@ -159,12 +159,15 @@ def process_slo_latency(workflow):
     average_stat_dict = {}
 
     for metric_name in metric_names:
-        dimension_value = metric_name.split(prefix)[0]
-        average_stat = calculate_average_extended_statistic(
-            namespace, metric_name, dimension_name, dimension_value, extended_statistic, period, days
-        )
-        average_stat_dict[metric_name] = average_stat
-        print(f"Average {extended_statistic} value for '{metric_name}': {average_stat:.2f} ms")
+        try:
+            dimension_value = metric_name.split(prefix)[0]
+            average_stat = calculate_average_extended_statistic(
+                namespace, metric_name, dimension_name, dimension_value, extended_statistic, period, days
+            )
+            average_stat_dict[metric_name] = average_stat
+            print(f"Average {extended_statistic} value for '{metric_name}': {average_stat:.2f} ms")
+        except Exception as e:
+            print(f"Error processing metric '{metric_name}': {e}")  
 
     # Process and save the updated YAML file
     process_and_save_yaml(input_yaml_path, output_yaml_path, average_stat_dict)

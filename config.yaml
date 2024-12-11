@@ -4,8 +4,8 @@ slo:
     prefix: "-workflow-latency"
     dimension_name: "Workflow Name"
     extended_statistic: "p99"
-    period: 300  # 5 minutes in seconds
-    days: 4  # Last 4 days
+    period: 3360
+    days: 56
     input_yaml_path: "./slo-dashboard/latency-slo.yaml"
     output_yaml_path: "./slo-dashboard/new-latency-slo.yaml"
 
